@@ -1,0 +1,25 @@
+# frontend/Dockerfile
+
+# Usar uma imagem base leve do Node.js
+FROM node:14-alpine
+
+# Definir o diretório de trabalho no contêiner
+WORKDIR /app
+
+# Copiar apenas os arquivos de configuração para o cache de dependências
+COPY package*.json ./
+
+# Instalar dependências
+RUN npm install
+
+# Copiar o restante dos arquivos do frontend para o contêiner
+COPY . .
+
+# Construir a aplicação para produção
+RUN npm run build
+
+# Expor a porta em que o servidor está rodando
+EXPOSE 3000
+
+# Comando para iniciar o servidor em produção
+CMD ["npx", "serve", "-s", "build"]
