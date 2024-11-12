@@ -1,10 +1,8 @@
 // backend/index.js
 const express = require('express');
 const { Pool } = require('pg');
-
 const app = express();
 const port = 5000;
-
 
 
 // Configura o PostgreSQL
