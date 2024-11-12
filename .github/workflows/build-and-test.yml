@@ -3,10 +3,10 @@ name: Build and Test
 on:
   push:
     branches:
-      - main  # Dispara o workflow em pushs na branch "main"
+      - main
   pull_request:
     branches:
-      - main  # Dispara o workflow em pull requests para a branch "main"
+      - main
 
 jobs:
   build_and_test_frontend:
@@ -15,16 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies and run tests
+      - name: Build Docker image for frontend
         run: |
-          cd frontend
-          npm install
-          npm test
+          docker build -t myrepo/frontend:latest ./frontend
+          docker run --rm myrepo/frontend:latest npm test
 
   build_and_test_backend:
     runs-on: ubuntu-latest
@@ -32,16 +26,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies and run tests
+      - name: Build Docker image for backend
         run: |
-          cd backend
-          npm install
-          npm test
+          docker build -t myrepo/backend:latest ./backend
+          docker run --rm myrepo/backend:latest npm test
 
   build_and_test_postgres:
     runs-on: ubuntu-latest
@@ -49,6 +37,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Test PostgreSQL setup
+      - name: Test PostgreSQL connection
         run: |
           docker run --rm postgres:13 psql -U admin -c "SELECT 1;"
