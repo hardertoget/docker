@@ -1,0 +1,54 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main  # Dispara o workflow em pushs na branch "main"
+  pull_request:
+    branches:
+      - main  # Dispara o workflow em pull requests para a branch "main"
+
+jobs:
+  build_and_test_frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies and run tests
+        run: |
+          cd frontend
+          npm install
+          npm test
+
+  build_and_test_backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies and run tests
+        run: |
+          cd backend
+          npm install
+          npm test
+
+  build_and_test_postgres:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Test PostgreSQL setup
+        run: |
+          docker run --rm postgres:13 psql -U admin -c "SELECT 1;"
