@@ -3,6 +3,8 @@
 # Usar uma imagem base leve do Node.js
 FROM node:14-alpine
 
+RUN apk add --no-cache bash
+
 # Definir o diretório de trabalho no contêiner
 WORKDIR /app
 
@@ -17,6 +19,8 @@ COPY . .
 
 # Construir a aplicação para produção
 RUN npm run build
+
+RUN chmod -R 755 ./node_modules/.bin
 
 # Expor a porta em que o servidor está rodando
 EXPOSE 3000
