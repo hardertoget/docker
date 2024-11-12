@@ -73,4 +73,5 @@ Para executar o ambiente localmente usando Docker Compose, siga os passos abaixo
    cd seu-repositorio
 
 2. Inicio os serviços com o docker compose 
-docker-compose up --build
+    ```bash
+    docker-compose up --build
