@@ -1,10 +1,11 @@
 // backend/index.js
 const express = require('express');
 const { Pool } = require('pg');
-const cors = require('cors');
-app.use(cors({ origin: '*' }));
+
 const app = express();
 const port = 5000;
+
+
 
 // Configura o PostgreSQL
 const pool = new Pool({
