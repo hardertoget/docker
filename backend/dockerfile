@@ -1,7 +1,7 @@
 # Usar uma imagem base do Node.js
 FROM node:14
 
-RUN apk add --no-cache bash
+RUN apt-get update && apt-get install -y bash
 
 # Definir o diretório de trabalho no contêiner
 WORKDIR /app
