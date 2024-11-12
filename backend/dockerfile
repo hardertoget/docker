@@ -1,6 +1,8 @@
 # Usar uma imagem base do Node.js
 FROM node:14
 
+RUN apk add --no-cache bash
+
 # Definir o diretório de trabalho no contêiner
 WORKDIR /app
 
@@ -12,6 +14,8 @@ RUN npm install
 
 # Copiar o restante dos arquivos do backend para o contêiner
 COPY . .
+
+RUN chmod -R 755 ./node_modules/.bin
 
 # Expor a porta onde o backend será executado
 EXPOSE 5000
