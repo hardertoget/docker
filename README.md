@@ -11,12 +11,7 @@ Cada componente é empacotado em contêineres Docker independentes, e o GitHub A
 
 O projeto segue a estrutura abaixo:
 
-├── backend/ │ ├── Dockerfile # Dockerfile para o backend │ └── ... # Código fonte do backend 
-├── frontend/ │ ├── Dockerfile # Dockerfile para o frontend │ └── ... # Código fonte do frontend 
-├── postgres/ # Diretório para o banco de dados PostgreSQL (se necessário) 
-├── docker-compose.yml # Arquivo Docker Compose para facilitar a execução local 
-└── .github/ └── workflows/ ├── build-and-test.yml # Workflow de build e teste └── deploy.yml # Workflow de deploy
-
+. ├── backend/ │ ├── Dockerfile # Dockerfile para o backend │ └── ... # Código fonte do backend ├── frontend/ │ ├── Dockerfile # Dockerfile para o frontend │ └── ... # Código fonte do frontend ├── postgres/ # Diretório para o banco de dados PostgreSQL (se necessário) ├── docker-compose.yml # Arquivo Docker Compose para facilitar a execução local └── .github/ └── workflows/ ├── build-and-test.yml # Workflow de build e teste └── deploy.yml # Workflow de deploy
 
 ### Dockerfiles
 
