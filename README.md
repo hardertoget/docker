@@ -1,4 +1,5 @@
 # Projeto de Automação de Ambientes com Docker e GitHub Actions
+# Aluno: Davi Sousa de Farias
 
 Este projeto implementa a automação da construção, testes e deploy de uma aplicação web moderna composta por três componentes principais:
 - Front-End construído com React.
